@@ -3,14 +3,14 @@ import 'package:movie_app/helpers/context_extension.dart';
 import 'package:movie_app/widgets/dots_indicator_widget.dart';
 import 'package:movie_app/widgets/movie_poster_page_view.dart';
 
-class MoviePosterList extends StatefulWidget {
-  const MoviePosterList({super.key});
+class MoviePostersList extends StatefulWidget {
+  const MoviePostersList({super.key});
 
   @override
-  State<MoviePosterList> createState() => _MoviePosterListState();
+  State<MoviePostersList> createState() => _MoviePostersListState();
 }
 
-class _MoviePosterListState extends State<MoviePosterList> {
+class _MoviePostersListState extends State<MoviePostersList> {
   late PageController _pageController;
   int _activeIndex = 0;
 

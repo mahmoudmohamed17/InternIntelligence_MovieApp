@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/widgets/movie_poster_list.dart';
+import 'package:movie_app/widgets/categories_widget.dart';
+import 'package:movie_app/widgets/movie_posters_list.dart';
 
 class HomeViewWidget extends StatelessWidget {
   const HomeViewWidget({super.key});
@@ -7,7 +8,11 @@ class HomeViewWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
-      slivers: [SliverToBoxAdapter(child: MoviePosterList())],
+      slivers: [
+        SliverToBoxAdapter(child: MoviePostersList()),
+        SliverToBoxAdapter(child: SizedBox(height: 16)),
+        SliverToBoxAdapter(child: CategoriesWidget(),),
+      ],
     );
   }
 }
