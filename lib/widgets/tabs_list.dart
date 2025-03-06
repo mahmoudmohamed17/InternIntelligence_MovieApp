@@ -15,6 +15,7 @@ class _TabsListState extends State<TabsList> {
     return SizedBox(
       height: 30,
       child: ListView.builder(
+        physics: const BouncingScrollPhysics(),
         scrollDirection: Axis.horizontal,
         itemCount: 6,
         itemBuilder: (context, index) {

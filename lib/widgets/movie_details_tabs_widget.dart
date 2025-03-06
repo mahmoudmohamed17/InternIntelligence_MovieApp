@@ -1,0 +1,61 @@
+import 'package:flutter/material.dart';
+import 'package:movie_app/helpers/context_extension.dart';
+import 'package:movie_app/utils/app_colors.dart';
+import 'package:movie_app/utils/styles.dart';
+
+class MovieDetailsTabsWidget extends StatefulWidget {
+  const MovieDetailsTabsWidget({super.key});
+
+  @override
+  State<MovieDetailsTabsWidget> createState() => _MovieDetailsTabsWidgetState();
+}
+
+class _MovieDetailsTabsWidgetState extends State<MovieDetailsTabsWidget>
+    with SingleTickerProviderStateMixin {
+  late TabController _tabController;
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 3, vsync: this);
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          TabBar(
+            controller: _tabController,
+            indicatorAnimation: TabIndicatorAnimation.elastic,
+            indicatorColor: AppColors.buttonColor,
+            indicatorPadding: const EdgeInsets.only(bottom: -8),
+            labelColor: AppColors.buttonColor,
+            labelStyle: AppStyles.regular16,
+            unselectedLabelColor: AppColors.secondaryTextColor,
+            unselectedLabelStyle: AppStyles.regular16,
+            dividerColor: Colors.transparent,
+            onTap: (index) {},
+            tabs: const [Text('Episode'), Text('Similar'), Text('About')],
+          ),
+          const SizedBox(height: 16),
+          SizedBox(
+            height: context.height * 0.2,
+            child: Text(
+              'Hwllo SDsad',
+              style: AppStyles.regular14.copyWith(color: Colors.white),
+            ),
+          ),
+          const SizedBox(height: 16),
+        ],
+      ),
+    );
+  }
+}

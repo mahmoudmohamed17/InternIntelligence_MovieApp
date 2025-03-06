@@ -34,9 +34,8 @@ class _MainViewState extends State<MainView> {
             _currentIndex = index;
           });
         },
-        enableFeedback: true,
-        elevation: 0,
         backgroundColor: AppColors.extraLightPrimaryColor,
+        unselectedItemColor: AppColors.secondaryTextColor,
         showUnselectedLabels: true,
         selectedFontSize: 12,
         currentIndex: _currentIndex,
