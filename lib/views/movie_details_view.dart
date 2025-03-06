@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/helpers/routes.dart';
+import 'package:movie_app/utils/app_colors.dart';
+import 'package:movie_app/widgets/movie_details_view_body.dart';
 
 class MovieDetailsView extends StatelessWidget {
   const MovieDetailsView({super.key});
@@ -7,8 +9,9 @@ class MovieDetailsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-
+    return const Scaffold(
+      backgroundColor: AppColors.primaryColor,
+      body: MovieDetailsViewBody(),
     );
   }
 }
