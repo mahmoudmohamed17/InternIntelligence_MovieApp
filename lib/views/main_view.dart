@@ -70,11 +70,8 @@ class _MainViewState extends State<MainView> {
             label: 'Saved',
           ),
           BottomNavigationBarItem(
-            activeIcon: Icon(FontAwesomeIcons.download, color: Colors.white),
-            icon: Icon(
-              FontAwesomeIcons.download,
-              color: AppColors.secondaryTextColor,
-            ),
+            activeIcon: Icon(Icons.download, color: Colors.white),
+            icon: Icon(Icons.download, color: AppColors.secondaryTextColor),
             backgroundColor: AppColors.extraLightPrimaryColor,
             label: 'Downloads',
           ),
