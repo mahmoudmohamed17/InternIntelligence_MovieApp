@@ -29,7 +29,9 @@ class _ExpandableTextState extends State<ExpandableText> {
         children: [
           TextSpan(
             text: displayedText,
-            style: AppStyles.regular14.copyWith(color: AppColors.secondaryTextColor),
+            style: AppStyles.regular14.copyWith(
+              color: AppColors.secondaryTextColor,
+            ),
           ),
           if (isLongText)
             TextSpan(
@@ -37,7 +39,7 @@ class _ExpandableTextState extends State<ExpandableText> {
               style: const TextStyle(
                 color: Colors.white,
                 fontSize: 14,
-                fontWeight: FontWeight.w600,
+                fontWeight: FontWeight.w500,
                 fontFamily: 'Poppins',
               ),
               recognizer:
