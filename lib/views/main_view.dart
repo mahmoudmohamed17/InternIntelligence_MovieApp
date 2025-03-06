@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:movie_app/helpers/routes.dart';
 import 'package:movie_app/utils/app_colors.dart';
 import 'package:movie_app/views/home_view_widget.dart';
 
 class MainView extends StatefulWidget {
   const MainView({super.key});
+  static const String id = Routes.mainView;
 
   @override
   State<MainView> createState() => _MainViewState();

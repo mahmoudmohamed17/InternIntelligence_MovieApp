@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/views/main_view.dart';
+import 'package:movie_app/helpers/app_routing.dart';
+import 'package:movie_app/helpers/routes.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,11 +11,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        useMaterial3: true
-      ),
-      home: const MainView());
+      theme: ThemeData(useMaterial3: true),
+      initialRoute: Routes.mainView,
+      onGenerateRoute: AppRouting.onGeneratedRoute,
+    );
   }
 }

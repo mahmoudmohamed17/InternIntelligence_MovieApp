@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/helpers/context_extension.dart';
+import 'package:movie_app/helpers/navigation_extension.dart';
+import 'package:movie_app/helpers/routes.dart';
 import 'package:movie_app/utils/assets.dart';
 
 class MoviesList extends StatelessWidget {
@@ -14,14 +16,19 @@ class MoviesList extends StatelessWidget {
         physics: const BouncingScrollPhysics(),
         itemCount: 10,
         itemBuilder: (context, index) {
-          return Padding(
-            padding: EdgeInsets.only(right: index == 9 ? 0 : 8),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(4),
-              child: Image.asset(
-                Assets.imagesTest,
-                width: context.width * 0.33,
-                fit: BoxFit.fill,
+          return GestureDetector(
+            onTap: () {
+              context.pushNamed(Routes.movieDetailsView);
+            },
+            child: Padding(
+              padding: EdgeInsets.only(right: index == 9 ? 0 : 8),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(4),
+                child: Image.asset(
+                  Assets.imagesTest,
+                  width: context.width * 0.33,
+                  fit: BoxFit.fill,
+                ),
               ),
             ),
           );
