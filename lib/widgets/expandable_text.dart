@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:movie_app/utils/app_colors.dart';
 import 'package:movie_app/utils/styles.dart';
 
 class ExpandableText extends StatefulWidget {
@@ -28,9 +29,9 @@ class _ExpandableTextState extends State<ExpandableText> {
         children: [
           TextSpan(
             text: displayedText,
-            style: AppStyles.regular14.copyWith(color: Colors.white),
+            style: AppStyles.regular14.copyWith(color: AppColors.secondaryTextColor),
           ),
-          if (isLongText) // إذا كان النص طويلًا أضف "Read more"
+          if (isLongText)
             TextSpan(
               text: isExpanded ? " Read less" : " Read more",
               style: const TextStyle(
