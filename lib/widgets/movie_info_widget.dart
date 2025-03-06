@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:movie_app/constants.dart';
 import 'package:movie_app/utils/app_colors.dart';
 import 'package:movie_app/utils/styles.dart';
+import 'package:movie_app/widgets/expandable_text.dart';
 import 'package:movie_app/widgets/movie_details_button.dart';
 
 class MovieInfoAndButtons extends StatelessWidget {
@@ -29,13 +30,7 @@ class MovieInfoAndButtons extends StatelessWidget {
           const SizedBox(height: 16),
           const MovieDetailsButton(),
           const SizedBox(height: 16),
-          Text(
-            textAlign: TextAlign.center,
-            defaulMovieDesc,
-            style: AppStyles.regular14.copyWith(
-              color: AppColors.secondaryTextColor,
-            ),
-          ),
+         const ExpandableText(text: defaulMovieDesc, maxLength: 150,),
         ],
       ),
     );

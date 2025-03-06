@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/helpers/context_extension.dart';
 import 'package:movie_app/utils/app_colors.dart';
 import 'package:movie_app/utils/styles.dart';
+import 'package:movie_app/widgets/movie_trailer_widget.dart';
 
 class MovieDetailsTabsWidget extends StatefulWidget {
   const MovieDetailsTabsWidget({super.key});
@@ -45,15 +45,8 @@ class _MovieDetailsTabsWidgetState extends State<MovieDetailsTabsWidget>
             onTap: (index) {},
             tabs: const [Text('Episode'), Text('Similar'), Text('About')],
           ),
-          const SizedBox(height: 16),
-          SizedBox(
-            height: context.height * 0.2,
-            child: Text(
-              'Hwllo SDsad',
-              style: AppStyles.regular14.copyWith(color: Colors.white),
-            ),
-          ),
-          const SizedBox(height: 16),
+          const SizedBox(height: 32),
+          const MovieTrailerWidget(),
         ],
       ),
     );
