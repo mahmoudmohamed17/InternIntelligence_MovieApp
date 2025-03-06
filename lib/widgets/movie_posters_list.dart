@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:movie_app/helpers/context_extension.dart';
 import 'package:movie_app/widgets/dots_indicator_widget.dart';
@@ -12,21 +14,28 @@ class MoviePostersList extends StatefulWidget {
 
 class _MoviePostersListState extends State<MoviePostersList> {
   late PageController _pageController;
+  late Timer _timer;
   int _activeIndex = 0;
 
   @override
   void initState() {
     super.initState();
-    _pageController = PageController();
-    _pageController.addListener(() {
+    _pageController = PageController(initialPage: _activeIndex);
+    _timer = Timer.periodic(const Duration(seconds: 2), (timer) {
       setState(() {
-        _activeIndex = _pageController.page!.round();
+        _activeIndex < 5 ? _activeIndex++ : _activeIndex = 0;
       });
+      _pageController.animateToPage(
+        _activeIndex,
+        duration: const Duration(milliseconds: 500),
+        curve: Curves.easeIn,
+      );
     });
   }
 
   @override
   void dispose() {
+    _timer.cancel();
     _pageController.dispose();
     super.dispose();
   }
