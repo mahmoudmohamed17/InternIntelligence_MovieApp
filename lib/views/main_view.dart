@@ -16,7 +16,7 @@ class _MainViewState extends State<MainView> {
     Text('Home'),
     Text('Search'),
     Text('Saved'),
-    Text('Download'),
+    Text('Downloads'),
     Text('Me'),
   ];
 
@@ -31,6 +31,12 @@ class _MainViewState extends State<MainView> {
             _currentIndex = index;
           });
         },
+        enableFeedback: true,
+        elevation: 0,
+        backgroundColor: AppColors.extraLightPrimaryColor,
+        showUnselectedLabels: true,
+        selectedFontSize: 12,
+        currentIndex: _currentIndex,
         items: const [
           BottomNavigationBarItem(
             activeIcon: Icon(FontAwesomeIcons.house, color: Colors.white),
@@ -38,6 +44,7 @@ class _MainViewState extends State<MainView> {
               FontAwesomeIcons.house,
               color: AppColors.secondaryTextColor,
             ),
+            backgroundColor: AppColors.extraLightPrimaryColor,
             label: 'Home',
           ),
           BottomNavigationBarItem(
@@ -49,6 +56,7 @@ class _MainViewState extends State<MainView> {
               FontAwesomeIcons.magnifyingGlass,
               color: AppColors.secondaryTextColor,
             ),
+            backgroundColor: AppColors.extraLightPrimaryColor,
             label: 'Search',
           ),
           BottomNavigationBarItem(
@@ -57,6 +65,7 @@ class _MainViewState extends State<MainView> {
               FontAwesomeIcons.bookmark,
               color: AppColors.secondaryTextColor,
             ),
+            backgroundColor: AppColors.extraLightPrimaryColor,
             label: 'Saved',
           ),
           BottomNavigationBarItem(
@@ -65,7 +74,8 @@ class _MainViewState extends State<MainView> {
               FontAwesomeIcons.download,
               color: AppColors.secondaryTextColor,
             ),
-            label: 'Download',
+            backgroundColor: AppColors.extraLightPrimaryColor,
+            label: 'Downloads',
           ),
           BottomNavigationBarItem(
             activeIcon: Icon(FontAwesomeIcons.user, color: Colors.white),
@@ -73,6 +83,7 @@ class _MainViewState extends State<MainView> {
               FontAwesomeIcons.user,
               color: AppColors.secondaryTextColor,
             ),
+            backgroundColor: AppColors.extraLightPrimaryColor,
             label: 'Me',
           ),
         ],
