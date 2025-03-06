@@ -1,0 +1,13 @@
+import 'package:flutter/material.dart';
+import 'package:movie_app/widgets/movie_poster_list.dart';
+
+class HomeViewWidget extends StatelessWidget {
+  const HomeViewWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomScrollView(
+      slivers: [SliverToBoxAdapter(child: MoviePosterList())],
+    );
+  }
+}
