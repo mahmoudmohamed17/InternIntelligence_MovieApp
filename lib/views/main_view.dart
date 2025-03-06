@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:movie_app/helpers/routes.dart';
 import 'package:movie_app/utils/app_colors.dart';
+import 'package:movie_app/utils/styles.dart';
 import 'package:movie_app/views/home_view_widget.dart';
+import 'package:movie_app/views/saved_view_widget.dart';
 
 class MainView extends StatefulWidget {
   const MainView({super.key});
@@ -15,12 +17,27 @@ class MainView extends StatefulWidget {
 class _MainViewState extends State<MainView> {
   int _currentIndex = 0;
 
-  final List<Widget> _screens = const [
-    HomeViewWidget(),
-    Text('Search'),
-    Text('Saved'),
-    Text('Downloads'),
-    Text('Me'),
+  final List<Widget> _screens = [
+    const HomeViewWidget(),
+    Center(
+      child: Text(
+        'Search',
+        style: AppStyles.bold24.copyWith(color: Colors.white),
+      ),
+    ),
+    const SavedViewWidget(),
+    Center(
+      child: Text(
+        'Downloads',
+        style: AppStyles.bold24.copyWith(color: Colors.white),
+      ),
+    ),
+    Center(
+      child: Text(
+        'Profile',
+        style: AppStyles.bold24.copyWith(color: Colors.white),
+      ),
+    ),
   ];
 
   @override
