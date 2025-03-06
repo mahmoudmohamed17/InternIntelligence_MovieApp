@@ -8,8 +8,8 @@ class DotIndicator extends StatelessWidget {
   Widget build(BuildContext context) {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 250),
-      height: 7,
-      width: isActive ? 24 : 7,
+      height: 6,
+      width: isActive ? 25 : 6,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(50),
         color: isActive ? AppColors.buttonColor : AppColors.secondaryTextColor,
