@@ -8,7 +8,7 @@ class CategoriesWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8.00),
+      padding: const EdgeInsets.symmetric(horizontal: 12.00),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         spacing: 8,
