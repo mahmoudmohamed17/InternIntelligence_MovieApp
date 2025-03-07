@@ -4,10 +4,7 @@ import 'package:flutter/material.dart';
 void buildSnackBar(BuildContext context, String message) {
   Flushbar(
     message: message,
-    icon: const Icon(
-      Icons.notifications,
-      color: Colors.white,
-    ),
+    icon: const Icon(Icons.notifications, color: Colors.white),
     shouldIconPulse: false,
     duration: const Duration(seconds: 3),
     flushbarPosition: FlushbarPosition.TOP,

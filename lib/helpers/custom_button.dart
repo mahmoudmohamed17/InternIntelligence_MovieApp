@@ -21,7 +21,7 @@ class CustomButton extends StatelessWidget {
         backgroundColor: backGrdColor,
         elevation: 0,
         shadowColor: Colors.transparent,
-        padding: const EdgeInsets.all(16)
+        padding: const EdgeInsets.all(16),
       ),
       icon: Icon(icon, size: 18, color: Colors.white),
       label: Text(

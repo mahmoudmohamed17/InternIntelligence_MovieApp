@@ -10,9 +10,9 @@ class AllMoviesPage extends StatelessWidget {
     return const Column(
       children: [
         Expanded(child: MostPopularMoviesWidget()),
-        SizedBox(height: 16,),
+        SizedBox(height: 16),
         Expanded(child: LatestMoviesWidget()),
-        SizedBox(height: 8,)
+        SizedBox(height: 8),
       ],
     );
   }

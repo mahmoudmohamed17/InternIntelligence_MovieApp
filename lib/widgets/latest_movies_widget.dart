@@ -24,7 +24,7 @@ class LatestMoviesWidget extends StatelessWidget {
             ),
           ],
         ),
-       const MoviesList(),
+        const MoviesList(),
       ],
     );
   }

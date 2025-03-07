@@ -19,7 +19,10 @@ class TabWidget extends StatelessWidget {
       ),
       padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 12),
       alignment: Alignment.center,
-      child: Text(model.title, style: AppStyles.regular14.copyWith(color: Colors.white)),
+      child: Text(
+        model.title,
+        style: AppStyles.regular14.copyWith(color: Colors.white),
+      ),
     );
   }
 }

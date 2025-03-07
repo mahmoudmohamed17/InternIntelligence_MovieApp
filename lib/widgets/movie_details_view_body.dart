@@ -13,9 +13,9 @@ class MovieDetailsViewBody extends StatelessWidget {
       slivers: [
         SliverToBoxAdapter(child: MovieDetailsPoster()),
         SliverToBoxAdapter(child: SizedBox(height: 16)),
-        SliverToBoxAdapter(child: MovieInfoAndButtons(),),
+        SliverToBoxAdapter(child: MovieInfoAndButtons()),
         SliverToBoxAdapter(child: SizedBox(height: 16)),
-        SliverToBoxAdapter(child: MovieDetailsTabsWidget(),),
+        SliverToBoxAdapter(child: MovieDetailsTabsWidget()),
         SliverToBoxAdapter(child: SizedBox(height: 16)),
       ],
     );

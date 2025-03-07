@@ -18,7 +18,7 @@ class CategoriesWidget extends StatelessWidget {
             'Categories',
             style: AppStyles.semiBold20.copyWith(color: Colors.white),
           ),
-          TabsList(controller: controller,),
+          TabsList(controller: controller),
         ],
       ),
     );
