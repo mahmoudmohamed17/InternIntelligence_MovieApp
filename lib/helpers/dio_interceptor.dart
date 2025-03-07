@@ -6,7 +6,7 @@ import 'package:movie_app/helpers/app_strings.dart';
 class DioInterceptor implements Interceptor {
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) {
-    log('onResponse: ${err.error.toString()}');
+    log('onError: ${err.error.toString()}');
   }
 
   @override

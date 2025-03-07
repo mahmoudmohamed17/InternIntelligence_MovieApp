@@ -1,19 +1,12 @@
 import 'package:dio/dio.dart';
 import 'package:movie_app/helpers/app_strings.dart';
-import 'package:movie_app/helpers/dio_interceptor.dart';
 
 class ApiService {
-  final dio = Dio(
-    BaseOptions(
-      baseUrl: 'https://api.themoviedb.org/3/',
-      connectTimeout: const Duration(seconds: 60),
-      receiveTimeout: const Duration(seconds: 60),
-    ),
-  );
+  final dio = Dio(BaseOptions(baseUrl: 'https://api.themoviedb.org/3/'));
 
-  ApiService() {
-    dio.interceptors.add(DioInterceptor());
-  }
+  // ApiService() {
+  //   dio.interceptors.add(DioInterceptor());
+  // }
 
   Future<Map<String, dynamic>> getAllMovies() async {
     var response = await dio.get(

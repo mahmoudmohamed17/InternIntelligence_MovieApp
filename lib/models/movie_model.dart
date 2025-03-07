@@ -12,10 +12,9 @@ class MovieModel extends MovieEntity {
   double? popularity;
   String? posterPath;
   String? releaseDate;
-  String title;
+  String? title;
   bool? video;
   double? voteAverage;
-  int? voteCount;
 
   MovieModel({
     this.adult,
@@ -28,43 +27,43 @@ class MovieModel extends MovieEntity {
     this.popularity,
     this.posterPath,
     this.releaseDate,
-    required this.title,
+    this.title,
     this.video,
     this.voteAverage,
-    this.voteCount,
   }) : super(
-         movieId: id!,
-         poster: '${AppStrings.imageUrlPath}$posterPath',
-         movieTitle: title,
-         description: overview!,
-         rate: voteAverage!.toStringAsFixed(2),
-         releasYear: releaseDate!,
-         type: movieType[genreIds!.first] ?? 'All',
-         trailerKey: ''
+         movieId: id ?? 0,
+         poster:
+             posterPath != null ? '${AppStrings.imageUrlPath}$posterPath' : '',
+         movieTitle: title ?? 'NO TITLE',
+         description: overview ?? 'NO DESCRIPTION',
+         rate: voteAverage?.toStringAsFixed(2) ?? 'NO RATE',
+         releasYear: releaseDate ?? 'NO RELEASE DATE',
+         type: movieType[genreIds?.first ?? 0] ?? 'All',
+         trailerKey: '',
        );
 
   factory MovieModel.fromJson(Map<String, dynamic> json) => MovieModel(
     adult: json['adult'] as bool?,
     backdropPath: json['backdrop_path'] as String?,
     genreIds: json['genre_ids'] as List<int>?,
-    id: json['id'] as int?,
+    id: json['id'] ?? 0,
     originalLanguage: json['original_language'] as String?,
     originalTitle: json['original_title'] as String?,
     overview: json['overview'] as String?,
     popularity: (json['popularity'] as num?)?.toDouble(),
     posterPath: json['poster_path'] as String?,
     releaseDate: json['release_date'] as String?,
-    title: json['title'] as String,
+    title: json['title'] as String?,
     video: json['video'] as bool?,
     voteAverage: (json['vote_average'] as num?)?.toDouble(),
-    voteCount: json['vote_count'] as int?,
   );
 
+  @override
   Map<String, dynamic> toJson() => {
     'adult': adult,
     'backdrop_path': backdropPath,
     'genre_ids': genreIds,
-    'id': id,
+    'id': id ?? 0,
     'original_language': originalLanguage,
     'original_title': originalTitle,
     'overview': overview,
@@ -74,7 +73,6 @@ class MovieModel extends MovieEntity {
     'title': title,
     'video': video,
     'vote_average': voteAverage,
-    'vote_count': voteCount,
   };
 }
 

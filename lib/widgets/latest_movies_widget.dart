@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_app/managers/home_cubit/home_cubit.dart';
 import 'package:movie_app/utils/styles.dart';
 import 'package:movie_app/widgets/movies_list.dart';
 
@@ -24,7 +26,22 @@ class LatestMoviesWidget extends StatelessWidget {
             ),
           ],
         ),
-        const MoviesList(),
+        BlocBuilder<HomeCubit, HomeState>(
+          builder: (context, state) {
+            if (state is HomeSuccess) {
+              return MoviesList(movies: state.movies);
+            } else if (state is HomeFailed) {
+              return Center(
+                child: Text(
+                  state.message,
+                  style: AppStyles.bold18.copyWith(color: Colors.white),
+                ),
+              );
+            } else {
+              return const Center(child: CircularProgressIndicator());
+            }
+          },
+        ),
       ],
     );
   }
