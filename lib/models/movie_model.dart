@@ -33,12 +33,13 @@ class MovieModel extends MovieEntity {
     this.voteAverage,
     this.voteCount,
   }) : super(
+         movieId: id!,
          poster: '${AppStrings.imageUrlPath}$posterPath',
-         title: title,
+         movieTitle: title,
          description: overview!,
          rate: voteAverage!.toStringAsFixed(2),
          releasYear: releaseDate!,
-         type: movieType[genreIds!.first]!,
+         type: movieType[genreIds!.first] ?? 'All',
        );
 
   factory MovieModel.fromJson(Map<String, dynamic> json) => MovieModel(
