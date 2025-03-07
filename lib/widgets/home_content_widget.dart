@@ -93,7 +93,7 @@ class _HomeContentWidgetState extends State<HomeContentWidget> {
             ),
 
             SizedBox(
-              height: context.height * 0.62,
+              height: context.height * 0.61,
               child: PageView(
                 controller: _pageController,
                 onPageChanged: (index) {
