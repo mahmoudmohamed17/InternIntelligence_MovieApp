@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:movie_app/helpers/app_routing.dart';
 import 'package:movie_app/helpers/routes.dart';
 
-void main() {
+void main() async {
   runApp(DevicePreview(builder: (context) => const MyApp()));
 }
 

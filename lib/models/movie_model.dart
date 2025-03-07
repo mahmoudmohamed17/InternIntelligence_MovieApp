@@ -40,6 +40,7 @@ class MovieModel extends MovieEntity {
          rate: voteAverage!.toStringAsFixed(2),
          releasYear: releaseDate!,
          type: movieType[genreIds!.first] ?? 'All',
+         trailerKey: ''
        );
 
   factory MovieModel.fromJson(Map<String, dynamic> json) => MovieModel(
