@@ -37,7 +37,7 @@ class MovieEntity {
 
   factory MovieEntity.fromJson(Map<String, dynamic> json) {
     return MovieEntity(
-      movieId: json['movieId'] ?? 0,
+      movieId: json['movieId'],
       poster: json['poster'],
       movieTitle: json['movieTitle'],
       description: json['description'],

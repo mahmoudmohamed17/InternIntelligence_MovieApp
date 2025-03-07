@@ -4,7 +4,7 @@ import 'package:movie_app/helpers/movie_entity.dart';
 class MovieModel extends MovieEntity {
   bool? adult;
   String? backdropPath;
-  List<int>? genreIds;
+  List<dynamic>? genreIds;
   int? id;
   String? originalLanguage;
   String? originalTitle;
@@ -32,8 +32,7 @@ class MovieModel extends MovieEntity {
     this.voteAverage,
   }) : super(
          movieId: id ?? 0,
-         poster:
-             posterPath != null ? '${AppStrings.imageUrlPath}$posterPath' : '',
+         poster: '${AppStrings.imageUrlPath}$posterPath',
          movieTitle: title ?? 'NO TITLE',
          description: overview ?? 'NO DESCRIPTION',
          rate: voteAverage?.toStringAsFixed(2) ?? 'NO RATE',
@@ -45,7 +44,7 @@ class MovieModel extends MovieEntity {
   factory MovieModel.fromJson(Map<String, dynamic> json) => MovieModel(
     adult: json['adult'] as bool?,
     backdropPath: json['backdrop_path'] as String?,
-    genreIds: json['genre_ids'] as List<int>?,
+    genreIds: json['genre_ids'] as List<dynamic>?,
     id: json['id'] ?? 0,
     originalLanguage: json['original_language'] as String?,
     originalTitle: json['original_title'] as String?,
@@ -63,7 +62,7 @@ class MovieModel extends MovieEntity {
     'adult': adult,
     'backdrop_path': backdropPath,
     'genre_ids': genreIds,
-    'id': id ?? 0,
+    'id': id,
     'original_language': originalLanguage,
     'original_title': originalTitle,
     'overview': overview,

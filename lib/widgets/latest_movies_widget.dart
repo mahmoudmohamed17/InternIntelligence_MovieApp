@@ -29,7 +29,7 @@ class LatestMoviesWidget extends StatelessWidget {
         BlocBuilder<HomeCubit, HomeState>(
           builder: (context, state) {
             if (state is HomeSuccess) {
-              return MoviesList(movies: state.movies);
+              return MoviesList(movies: state.movies.sublist(10));
             } else if (state is HomeFailed) {
               return Center(
                 child: Text(

@@ -11,9 +11,9 @@ class HomeRepoImpl extends HomeRepo {
   final _apiService = ApiService();
 
   @override
-  Future<Either<Failure, List<MovieEntity>>> getAllMovies() async {
+  Future<Either<Failure, List<MovieEntity>>> getAllMovies({int page = 1}) async {
     try {
-      var data = await _apiService.getAllMovies();
+      var data = await _apiService.getAllMovies(page: page);
       var result = parseData(data);
       return right(result);
     } on DioException catch (e) {

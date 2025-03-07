@@ -5,8 +5,8 @@ import 'package:movie_app/utils/styles.dart';
 import 'package:movie_app/widgets/movies_list.dart';
 
 class MostPopularMoviesWidget extends StatelessWidget {
-  const MostPopularMoviesWidget({super.key});
 
+  const MostPopularMoviesWidget({super.key});
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -29,7 +29,7 @@ class MostPopularMoviesWidget extends StatelessWidget {
         BlocBuilder<HomeCubit, HomeState>(
           builder: (context, state) {
             if (state is HomeSuccess) {
-              return  MoviesList(movies: state.movies,);
+              return  MoviesList(movies: state.movies.sublist(0, 9),);
             } else if (state is HomeFailed) {
               return Center(
                 child: Text(

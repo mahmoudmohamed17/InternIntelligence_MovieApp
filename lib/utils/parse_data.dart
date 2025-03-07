@@ -1,12 +1,10 @@
-import 'dart:developer';
-
 import 'package:movie_app/helpers/movie_entity.dart';
+import 'package:movie_app/models/movie_model.dart';
 
 List<MovieEntity> parseData(Map<String, dynamic> data) {
   List<MovieEntity> result = [];
   for(var item in data['results']) {
-    log('Hello world');
-    result.add(MovieEntity.fromJson(item));
+    result.add(MovieModel.fromJson(item));
   }
   return result;
 }

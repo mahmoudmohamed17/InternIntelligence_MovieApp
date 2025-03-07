@@ -8,16 +8,16 @@ class ApiService {
   //   dio.interceptors.add(DioInterceptor());
   // }
 
-  Future<Map<String, dynamic>> getAllMovies() async {
+  Future<Map<String, dynamic>> getAllMovies({int page = 1}) async {
     var response = await dio.get(
-      'discover/movie?api_key=${AppStrings.myApiKey}',
+      'discover/movie?api_key=${AppStrings.myApiKey}&page=$page',
     );
     return response.data;
   }
 
-  Future<Map<String, dynamic>> getMoviesWithType({required int id}) async {
+  Future<Map<String, dynamic>> getMoviesWithType({required int id, int page = 1}) async {
     var response = await dio.get(
-      'discover/movie?api_key=${AppStrings.myApiKey}&with_genres=$id',
+      'discover/movie?api_key=${AppStrings.myApiKey}&with_genres=$id&page=$page',
     );
     return response.data;
   }
