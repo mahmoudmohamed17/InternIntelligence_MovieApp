@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/models/category_tab_model.dart';
 import 'package:movie_app/utils/app_colors.dart';
 import 'package:movie_app/utils/styles.dart';
 
 class TabWidget extends StatelessWidget {
-  const TabWidget({super.key, required this.isActive});
+  const TabWidget({super.key, required this.isActive, required this.model});
   final bool isActive;
+  final CategoryTabModel model;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +19,7 @@ class TabWidget extends StatelessWidget {
       ),
       padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 12),
       alignment: Alignment.center,
-      child: Text('Action', style: AppStyles.regular14.copyWith(color: Colors.white)),
+      child: Text(model.title, style: AppStyles.regular14.copyWith(color: Colors.white)),
     );
   }
 }

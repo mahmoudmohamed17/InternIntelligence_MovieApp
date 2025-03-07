@@ -18,7 +18,7 @@ class MovieDetailsPoster extends StatelessWidget {
             child: Image.asset(Assets.imagesTest, fit: BoxFit.fill),
           ),
           const Padding(
-            padding: EdgeInsets.all(16),
+            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 48),
             child: Align(
               alignment: Alignment.topCenter,
               child: MovieDetailsPosterHeader(),

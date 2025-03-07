@@ -3,7 +3,8 @@ import 'package:movie_app/utils/styles.dart';
 import 'package:movie_app/widgets/tabs_list.dart';
 
 class CategoriesWidget extends StatelessWidget {
-  const CategoriesWidget({super.key});
+  const CategoriesWidget({super.key, required this.controller});
+  final ScrollController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +18,7 @@ class CategoriesWidget extends StatelessWidget {
             'Categories',
             style: AppStyles.semiBold20.copyWith(color: Colors.white),
           ),
-          TabsList(),
+          TabsList(controller: controller,),
         ],
       ),
     );

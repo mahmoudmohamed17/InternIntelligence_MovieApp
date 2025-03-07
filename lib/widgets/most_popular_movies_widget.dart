@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:movie_app/utils/styles.dart';
 import 'package:movie_app/widgets/movies_list.dart';
 
-class LatestMoviesWidget extends StatelessWidget {
-  const LatestMoviesWidget({super.key});
+class MostPopularMoviesWidget extends StatelessWidget {
+  const MostPopularMoviesWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class LatestMoviesWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              'Latest Movies',
+              'Most Popular',
               style: AppStyles.semiBold20.copyWith(color: Colors.white),
             ),
             Text(
@@ -24,7 +24,7 @@ class LatestMoviesWidget extends StatelessWidget {
             ),
           ],
         ),
-       const MoviesList(),
+        const MoviesList(),
       ],
     );
   }
