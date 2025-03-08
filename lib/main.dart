@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => HomeCubit(),
+      create: (context) => HomeCubit(page: 3, id: 35),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(useMaterial3: true),

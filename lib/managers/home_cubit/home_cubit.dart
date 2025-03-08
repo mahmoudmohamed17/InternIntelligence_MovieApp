@@ -1,26 +1,20 @@
 import 'package:bloc/bloc.dart';
-import 'package:dio/dio.dart';
-import 'package:movie_app/helpers/api_server_failure.dart';
-import 'package:movie_app/helpers/custom_excption.dart';
 import 'package:movie_app/helpers/movie_entity.dart';
-import 'package:movie_app/services/api_service.dart';
-import 'package:movie_app/utils/parse_data.dart';
+import 'package:movie_app/repos/home_repo_impl.dart';
 part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
-  HomeCubit() : super(HomeInitial());
-  final _apiService = ApiService();
+  HomeCubit({int page = 1, int? id}) : super(HomeInitial()) {
+    getAllMovies(page: page, id: id);
+  }
+  final _homeRepo = HomeRepoImpl();
 
-  Future<List<MovieEntity>?> getAllMovies({int page = 1}) async {
+  Future<void> getAllMovies({int page = 1, int? id}) async {
     emit(HomeLoading());
-    try {
-      var data = await _apiService.getAllMovies(page: page);
-      var movies = parseData(data);
-      return movies;
-    } on DioException catch (e) {
-      throw ApiServerFailure.fromDioException(e);
-    } catch (e) {
-      throw CustomExcption(message: e.toString());
-    }
+    var result = await _homeRepo.getAllMovies(page: page, id: id);
+    result.fold(
+      (failure) => emit(HomeFailed(message: failure.message)),
+      (data) => emit(HomeSuccess(movies: data)),
+    );
   }
 }
