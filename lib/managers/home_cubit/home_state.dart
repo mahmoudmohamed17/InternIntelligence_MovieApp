@@ -1,19 +1,25 @@
 part of 'home_cubit.dart';
 
-class HomeState {}
+enum HomeStatus { loading, success, failed }
 
-final class HomeInitial extends HomeState {}
-
-final class HomeLoading extends HomeState {}
-
-final class HomeSuccess extends HomeState {
+class HomeState {
+  final HomeStatus status;
   final List<MovieEntity> movies;
+  final String selectedCategory;
 
-  HomeSuccess({required this.movies});
-}
+  HomeState({
+    required this.status,
+    required this.movies,
+    required this.selectedCategory,
+  });
 
-final class HomeFailed extends HomeState {
-  final String message;
-
-  HomeFailed({required this.message});
+  HomeState copyWith({
+    HomeStatus? status,
+    List<MovieEntity>? movies,
+    String? selectedCategory,
+  }) => HomeState(
+    status: status ?? this.status,
+    movies: movies ?? this.movies,
+    selectedCategory: selectedCategory ?? this.selectedCategory,
+  );
 }

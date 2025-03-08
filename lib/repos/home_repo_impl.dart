@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:movie_app/helpers/api_server_failure.dart';
@@ -15,7 +13,6 @@ class HomeRepoImpl extends HomeRepo {
   @override
   Future<Either<Failure, List<MovieEntity>>> getAllMovies({int page = 1, int? id}) async {
     try {
-      log('Welcome');
       var data = await _apiService.getAllMovies(page: page, id: id);
       var result = parseData(data);
       return right(result);

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/helpers/context_extension.dart';
+import 'package:movie_app/managers/home_cubit/home_cubit.dart';
 import 'package:movie_app/models/category_tab_model.dart';
 import 'package:movie_app/utils/styles.dart';
-import 'package:movie_app/widgets/all_movies_page.dart';
+import 'package:movie_app/widgets/movies_page.dart';
 import 'package:movie_app/widgets/tab_widget.dart';
 
 class HomeContentWidget extends StatefulWidget {
@@ -22,6 +24,12 @@ class _HomeContentWidgetState extends State<HomeContentWidget> {
     _pageController = PageController();
     _scrollController = ScrollController();
     _pageController.addListener(_syncTabScroll);
+    context.read<HomeCubit>().getAllMovies(
+      categoryId:
+          models[_currentIndex].title == 'All'
+              ? null
+              : moviesTitleId[models[_currentIndex].title],
+    );
   }
 
   void _syncTabScroll() {
@@ -48,6 +56,12 @@ class _HomeContentWidgetState extends State<HomeContentWidget> {
     setState(() {
       _currentIndex = index;
     });
+    context.read<HomeCubit>().getAllMovies(
+      categoryId:
+          models[_currentIndex].title == 'All'
+              ? null
+              : moviesTitleId[models[_currentIndex].title],
+    );
   }
 
   @override
@@ -94,21 +108,21 @@ class _HomeContentWidgetState extends State<HomeContentWidget> {
 
             SizedBox(
               height: context.height * 0.61,
-              child: PageView(
+              child: PageView.builder(
                 controller: _pageController,
                 onPageChanged: (index) {
                   setState(() {
                     _currentIndex = index;
                   });
+                  context.read<HomeCubit>().getAllMovies(
+                    categoryId:
+                        models[_currentIndex].title == 'All'
+                            ? null
+                            : moviesTitleId[models[_currentIndex].title],
+                  );
                 },
-                children: const [
-                  AllMoviesPage(),
-                  AllMoviesPage(),
-                  AllMoviesPage(),
-                  AllMoviesPage(),
-                  AllMoviesPage(),
-                  AllMoviesPage(),
-                ],
+                itemCount: models.length,
+                itemBuilder: (context, index) => const MoviesPage(),
               ),
             ),
           ],
@@ -126,3 +140,11 @@ final List<CategoryTabModel> models = [
   CategoryTabModel(title: 'Documentary', onTap: () {}),
   CategoryTabModel(title: 'Horror', onTap: () {}),
 ];
+
+Map<String, int?> moviesTitleId = {
+  'Action': 28,
+  'Comedy': 35,
+  'Drama': 18,
+  'Documentary': 99,
+  'Horror': 27,
+};

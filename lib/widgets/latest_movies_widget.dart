@@ -28,18 +28,14 @@ class LatestMoviesWidget extends StatelessWidget {
         ),
         BlocBuilder<HomeCubit, HomeState>(
           builder: (context, state) {
-            if (state is HomeSuccess) {
-              return MoviesList(movies: state.movies.sublist(10));
-            } else if (state is HomeFailed) {
-              return Center(
-                child: Text(
-                  state.message,
-                  style: AppStyles.bold18.copyWith(color: Colors.white),
-                ),
-              );
-            } else {
+            if (state.status == HomeStatus.loading) {
               return const Center(child: CircularProgressIndicator());
+            } else if (state.status == HomeStatus.failed) {
+              return const Center(child: Text('Failed to load movies'));
+            } else if (state.movies.isEmpty) {
+              return const Center(child: Text('No movies found'));
             }
+            return MoviesList(movies: state.movies);
           },
         ),
       ],
