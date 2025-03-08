@@ -21,7 +21,10 @@ class MoviesList extends StatelessWidget {
         itemBuilder: (context, index) {
           return GestureDetector(
             onTap: () {
-              context.pushNamed(Routes.movieDetailsView);
+              context.pushNamed(
+                Routes.movieDetailsView,
+                arguments: movies[index],
+              );
             },
             child: Padding(
               padding: EdgeInsets.only(right: index == 9 ? 0 : 8),

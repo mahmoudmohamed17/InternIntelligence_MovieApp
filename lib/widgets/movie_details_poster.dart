@@ -1,10 +1,13 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:movie_app/helpers/context_extension.dart';
-import 'package:movie_app/utils/assets.dart';
+import 'package:movie_app/helpers/movie_entity.dart';
 import 'package:movie_app/widgets/movie_details_poster_header.dart';
 
 class MovieDetailsPoster extends StatelessWidget {
-  const MovieDetailsPoster({super.key});
+  const MovieDetailsPoster({super.key, required this.movie});
+  final MovieEntity movie;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +18,13 @@ class MovieDetailsPoster extends StatelessWidget {
         clipBehavior: Clip.none,
         children: [
           Positioned.fill(
-            child: Image.asset(Assets.imagesTest, fit: BoxFit.fill),
+            child: CachedNetworkImage(
+              imageUrl: movie.poster,
+              fit: BoxFit.fill,
+              errorWidget:
+                  (context, url, error) =>
+                      const Center(child: Icon(FontAwesomeIcons.exclamation)),
+            ),
           ),
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 16, vertical: 48),

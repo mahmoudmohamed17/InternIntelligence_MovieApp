@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/helpers/movie_entity.dart';
 import 'package:movie_app/utils/app_colors.dart';
 import 'package:movie_app/utils/styles.dart';
 import 'package:movie_app/widgets/movie_trailer_widget.dart';
 
 class MovieDetailsTabsWidget extends StatefulWidget {
-  const MovieDetailsTabsWidget({super.key});
+  const MovieDetailsTabsWidget({super.key, required this.movie});
+  final MovieEntity movie;
 
   @override
   State<MovieDetailsTabsWidget> createState() => _MovieDetailsTabsWidgetState();
@@ -46,7 +48,7 @@ class _MovieDetailsTabsWidgetState extends State<MovieDetailsTabsWidget>
             tabs: const [Text('Episode'), Text('Similar'), Text('About')],
           ),
           const SizedBox(height: 32),
-          const MovieTrailerWidget(),
+          MovieTrailerWidget(movie: widget.movie),
         ],
       ),
     );
