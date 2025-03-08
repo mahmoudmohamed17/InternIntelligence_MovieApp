@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:movie_app/helpers/context_extension.dart';
 import 'package:movie_app/widgets/dots_indicator_widget.dart';
