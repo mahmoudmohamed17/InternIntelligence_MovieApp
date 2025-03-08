@@ -18,7 +18,7 @@ class SavedMoviesList extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 8),
             itemBuilder: (context, index) {
               return Dismissible(
-                key: ValueKey(index),
+                key: ValueKey(state.movies[index].movieId),
                 onDismissed: (direction) {
                   context.read<SavedMovieCubit>().removeFromSaved(
                     state.movies[index],
