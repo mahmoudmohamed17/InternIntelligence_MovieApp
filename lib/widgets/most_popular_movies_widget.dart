@@ -35,7 +35,7 @@ class MostPopularMoviesWidget extends StatelessWidget {
               return const Center(child: Text('No movies found'));
             }
 
-            return MoviesList(movies: state.movies);
+            return MoviesList(movies: state.movies.sublist(0,8));
           },
         ),
       ],

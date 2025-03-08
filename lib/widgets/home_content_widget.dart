@@ -48,14 +48,11 @@ class _HomeContentWidgetState extends State<HomeContentWidget> {
   }
 
   void _onTapTab(int index) {
-    _pageController.animateToPage(
-      index,
-      duration: const Duration(milliseconds: 300),
-      curve: Curves.ease,
-    );
+    if (_currentIndex == index) return;
     setState(() {
       _currentIndex = index;
     });
+    _pageController.jumpToPage(index);
     context.read<HomeCubit>().getAllMovies(
       categoryId:
           models[_currentIndex].title == 'All'
@@ -111,6 +108,7 @@ class _HomeContentWidgetState extends State<HomeContentWidget> {
               child: PageView.builder(
                 controller: _pageController,
                 onPageChanged: (index) {
+                  if (_currentIndex == index) return;
                   setState(() {
                     _currentIndex = index;
                   });
@@ -133,15 +131,15 @@ class _HomeContentWidgetState extends State<HomeContentWidget> {
 }
 
 final List<CategoryTabModel> models = [
-  CategoryTabModel(title: 'All', onTap: () {}),
-  CategoryTabModel(title: 'Action', onTap: () {}),
-  CategoryTabModel(title: 'Comedy', onTap: () {}),
-  CategoryTabModel(title: 'Drama', onTap: () {}),
-  CategoryTabModel(title: 'Documentary', onTap: () {}),
-  CategoryTabModel(title: 'Horror', onTap: () {}),
+  CategoryTabModel(title: 'All'),
+  CategoryTabModel(title: 'Action'),
+  CategoryTabModel(title: 'Comedy'),
+  CategoryTabModel(title: 'Drama'),
+  CategoryTabModel(title: 'Documentary'),
+  CategoryTabModel(title: 'Horror'),
 ];
 
-Map<String, int?> moviesTitleId = {
+Map<String, int> moviesTitleId = {
   'Action': 28,
   'Comedy': 35,
   'Drama': 18,

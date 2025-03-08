@@ -35,7 +35,7 @@ class LatestMoviesWidget extends StatelessWidget {
             } else if (state.movies.isEmpty) {
               return const Center(child: Text('No movies found'));
             }
-            return MoviesList(movies: state.movies);
+            return MoviesList(movies: state.movies.sublist(9));
           },
         ),
       ],

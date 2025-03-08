@@ -14,12 +14,12 @@ class _TabsListState extends State<TabsList> {
   int _activeTab = 0;
 
   final List<CategoryTabModel> models = [
-    CategoryTabModel(title: 'All', onTap: () {}),
-    CategoryTabModel(title: 'Action', onTap: () {}),
-    CategoryTabModel(title: 'Comedy', onTap: () {}),
-    CategoryTabModel(title: 'Drama', onTap: () {}),
-    CategoryTabModel(title: 'Documentary', onTap: () {}),
-    CategoryTabModel(title: 'Horror', onTap: () {}),
+    CategoryTabModel(title: 'All'),
+    CategoryTabModel(title: 'Action'),
+    CategoryTabModel(title: 'Comedy'),
+    CategoryTabModel(title: 'Drama'),
+    CategoryTabModel(title: 'Documentary'),
+    CategoryTabModel(title: 'Horror'),
   ];
   @override
   Widget build(BuildContext context) {
@@ -35,7 +35,6 @@ class _TabsListState extends State<TabsList> {
             padding: EdgeInsets.only(right: index == 5 ? 0 : 8),
             child: GestureDetector(
               onTap: () {
-                models[index].onTap.call();
                 setState(() {
                   _activeTab = index;
                 });
