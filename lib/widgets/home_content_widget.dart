@@ -108,16 +108,7 @@ class _HomeContentWidgetState extends State<HomeContentWidget> {
               child: PageView.builder(
                 controller: _pageController,
                 onPageChanged: (index) {
-                  if (_currentIndex == index) return;
-                  setState(() {
-                    _currentIndex = index;
-                  });
-                  context.read<HomeCubit>().getAllMovies(
-                    categoryId:
-                        models[_currentIndex].title == 'All'
-                            ? null
-                            : moviesTitleId[models[_currentIndex].title],
-                  );
+                  _onTapTab(index);
                 },
                 itemCount: models.length,
                 itemBuilder: (context, index) => const MoviesPage(),
