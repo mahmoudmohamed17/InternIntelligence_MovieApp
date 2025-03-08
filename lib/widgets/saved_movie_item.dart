@@ -1,11 +1,14 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:movie_app/helpers/context_extension.dart';
+import 'package:movie_app/helpers/movie_entity.dart';
 import 'package:movie_app/utils/app_colors.dart';
-import 'package:movie_app/utils/assets.dart';
 import 'package:movie_app/utils/styles.dart';
 
 class SavedMovieItem extends StatelessWidget {
-  const SavedMovieItem({super.key});
+  const SavedMovieItem({super.key, required this.movie});
+  final MovieEntity movie;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +29,17 @@ class SavedMovieItem extends StatelessWidget {
               height: context.height * 0.15,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(16),
-                child: Image.asset(Assets.imagesTest, fit: BoxFit.fill),
+                child: CachedNetworkImage(
+                  imageUrl: movie.poster,
+                  errorWidget:
+                      (context, url, error) => const Center(
+                        child: Icon(
+                          FontAwesomeIcons.exclamation,
+                          color: Colors.red,
+                        ),
+                      ),
+                  fit: BoxFit.fill,
+                ),
               ),
             ),
             SizedBox(
@@ -38,7 +51,7 @@ class SavedMovieItem extends StatelessWidget {
                   FractionallySizedBox(
                     widthFactor: 1,
                     child: Text(
-                      'Movie Name',
+                      movie.movieTitle,
                       maxLines: 3,
                       overflow: TextOverflow.ellipsis,
                       style: AppStyles.regular16.copyWith(color: Colors.white),
@@ -47,7 +60,7 @@ class SavedMovieItem extends StatelessWidget {
                   FractionallySizedBox(
                     widthFactor: 1,
                     child: Text(
-                      'Action, Adventure',
+                      movie.type,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: AppStyles.regular14.copyWith(

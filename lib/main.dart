@@ -5,6 +5,7 @@ import 'package:movie_app/helpers/app_routing.dart';
 import 'package:movie_app/helpers/my_bloc_observer.dart';
 import 'package:movie_app/helpers/routes.dart';
 import 'package:movie_app/managers/home_cubit/home_cubit.dart';
+import 'package:movie_app/managers/saved_movies_cubit/saved_movie_cubit.dart';
 
 void main() {
   Bloc.observer = MyBlocObserver();
@@ -16,8 +17,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => HomeCubit(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => HomeCubit()),
+        BlocProvider(create: (context) => SavedMovieCubit()),
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(useMaterial3: true),
