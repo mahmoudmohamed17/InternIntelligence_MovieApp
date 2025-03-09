@@ -60,7 +60,7 @@ class SavedMovieItem extends StatelessWidget {
                   FractionallySizedBox(
                     widthFactor: 1,
                     child: Text(
-                      movie.type,
+                      movie.type.first,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: AppStyles.regular14.copyWith(

@@ -31,11 +31,21 @@ class LatestMoviesWidget extends StatelessWidget {
             if (state.status == HomeStatus.loading) {
               return const Center(child: CircularProgressIndicator());
             } else if (state.status == HomeStatus.failed) {
-              return const Center(child: Text('Failed to load movies'));
+              return Center(
+                child: Text(
+                  'Failed to load movies',
+                  style: AppStyles.bold18.copyWith(color: Colors.white),
+                ),
+              );
             } else if (state.movies.isEmpty) {
-              return const Center(child: Text('No movies found'));
+              return Center(
+                child: Text(
+                  'No movies found',
+                  style: AppStyles.bold18.copyWith(color: Colors.white),
+                ),
+              );
             }
-            return MoviesList(movies: state.movies.sublist(9));
+            return MoviesList(movies: state.movies.sublist(10));
           },
         ),
       ],

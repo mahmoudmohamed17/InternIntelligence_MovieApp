@@ -23,7 +23,7 @@ class MovieInfoAndButtons extends StatelessWidget {
           const SizedBox(height: 4),
           Text(
             textAlign: TextAlign.center,
-            '${movie.releasYear.substring(0, 4)} · ${movie.type} · ${movie.rate} ⭐',
+            '${movie.releasYear.substring(0, 4)} · ${movie.type.toString().replaceAll('[', '').replaceAll(']', '')} · ${movie.rate} ⭐',
             style: AppStyles.regular14.copyWith(
               color: AppColors.secondaryTextColor,
             ),

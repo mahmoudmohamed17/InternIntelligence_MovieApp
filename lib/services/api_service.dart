@@ -1,24 +1,25 @@
 import 'package:dio/dio.dart';
 import 'package:movie_app/helpers/app_strings.dart';
+import 'package:movie_app/helpers/dio_interceptor.dart';
 
 class ApiService {
-  final dio = Dio(BaseOptions(baseUrl: 'https://api.themoviedb.org/3/'));
+  final dio = Dio(
+    BaseOptions(
+      baseUrl: 'https://api.themoviedb.org/3/',
+      connectTimeout: const Duration(seconds: 60),
+      receiveTimeout: const Duration(seconds: 60),
+      sendTimeout: const Duration(seconds: 60),
+    ),
+  );
 
-  // ApiService() {
-  //   dio.interceptors.add(DioInterceptor());
-  // }
+  ApiService() {
+    dio.interceptors.add(DioInterceptor());
+  }
 
-  Future<Map<String, dynamic>> getAllMovies({int page = 2, int? id}) async {
-    Response? response;
-    if (id == null) {
-      response = await dio.get(
-        'discover/movie?api_key=${AppStrings.myApiKey}&page=$page',
-      );
-    } else {
-      response = await dio.get(
-        'discover/movie?api_key=${AppStrings.myApiKey}&page=$page&with_genres=$id',
-      );
-    }
+  Future<Map<String, dynamic>> getAllMovies({required int id}) async {
+    var response = await dio.get(
+      'discover/movie?api_key=${AppStrings.myApiKey}&page=5&with_genres=$id',
+    );
     return response.data;
   }
 

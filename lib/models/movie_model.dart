@@ -1,5 +1,6 @@
 import 'package:movie_app/helpers/app_strings.dart';
 import 'package:movie_app/helpers/movie_entity.dart';
+import 'package:movie_app/utils/assets.dart';
 
 class MovieModel extends MovieEntity {
   bool? adult;
@@ -32,19 +33,22 @@ class MovieModel extends MovieEntity {
     this.voteAverage,
   }) : super(
          movieId: id ?? 0,
-         poster: '${AppStrings.imageUrlPath}$posterPath',
+         poster:
+             posterPath != null
+                 ? '${AppStrings.imageUrlPath}$posterPath'
+                 : Assets.imagesTest,
          movieTitle: title ?? 'NO TITLE',
          description: overview ?? 'NO DESCRIPTION',
          rate: voteAverage?.toStringAsFixed(2) ?? 'NO RATE',
          releasYear: releaseDate ?? 'NO RELEASE DATE',
-         type: movieType[genreIds?.first ?? 0] ?? 'All',
+         type: convertGenresIds(genreIds ?? [28, 35]),
          trailerKey: '',
        );
 
   factory MovieModel.fromJson(Map<String, dynamic> json) => MovieModel(
-    adult: json['adult'] as bool?,
+    adult: json['adult'] ?? false,
     backdropPath: json['backdrop_path'] as String?,
-    genreIds: json['genre_ids'] as List<dynamic>?,
+    genreIds: json['genre_ids'] ?? [],
     id: json['id'] ?? 0,
     originalLanguage: json['original_language'] as String?,
     originalTitle: json['original_title'] as String?,
@@ -75,10 +79,23 @@ class MovieModel extends MovieEntity {
   };
 }
 
-Map<int, String> movieType = {
-  28: 'Action',
-  35: 'Comedy',
-  18: 'Drama',
-  99: 'Documentary',
-  27: 'Horror',
+Map<int, String> genresMap = {
+  28: "Action",
+  12: "Adventure",
+  16: "Animation",
+  35: "Comedy",
+  80: "Crime",
+  99: "Documentary",
+  18: "Drama",
+  10751: "Family",
+  14: "Fantasy",
+  27: "Horror",
+  9648: "Mystery",
+  10749: "Romance",
+  878: "Science Fiction",
+  53: "Thriller",
 };
+
+List<String> convertGenresIds(List<dynamic> list) {
+  return list.map((item) => genresMap[item] ?? '').toList();
+}

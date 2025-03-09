@@ -25,10 +25,7 @@ class _HomeContentWidgetState extends State<HomeContentWidget> {
     _scrollController = ScrollController();
     _pageController.addListener(_syncTabScroll);
     context.read<HomeCubit>().getAllMovies(
-      categoryId:
-          models[_currentIndex].title == 'All'
-              ? null
-              : moviesTitleId[models[_currentIndex].title],
+      id: genresMapReversed[models[_currentIndex].title]!,
     );
   }
 
@@ -54,10 +51,7 @@ class _HomeContentWidgetState extends State<HomeContentWidget> {
     });
     _pageController.jumpToPage(index);
     context.read<HomeCubit>().getAllMovies(
-      categoryId:
-          models[_currentIndex].title == 'All'
-              ? null
-              : moviesTitleId[models[_currentIndex].title],
+      id: genresMapReversed[models[_currentIndex].title]!,
     );
   }
 
@@ -90,7 +84,7 @@ class _HomeContentWidgetState extends State<HomeContentWidget> {
                 itemCount: models.length,
                 itemBuilder: (context, index) {
                   return Padding(
-                    padding: EdgeInsets.only(right: index == 5 ? 0 : 8),
+                    padding: EdgeInsets.only(right: index == models.length - 1 ? 0 : 8),
                     child: GestureDetector(
                       onTap: () => _onTapTab(index),
                       child: TabWidget(
@@ -122,18 +116,29 @@ class _HomeContentWidgetState extends State<HomeContentWidget> {
 }
 
 final List<CategoryTabModel> models = [
-  CategoryTabModel(title: 'All'),
   CategoryTabModel(title: 'Action'),
+  CategoryTabModel(title: 'Adventure'),
   CategoryTabModel(title: 'Comedy'),
+  CategoryTabModel(title: 'Crime'),
   CategoryTabModel(title: 'Drama'),
   CategoryTabModel(title: 'Documentary'),
   CategoryTabModel(title: 'Horror'),
+  CategoryTabModel(title: 'Family'),
 ];
 
-Map<String, int> moviesTitleId = {
-  'Action': 28,
-  'Comedy': 35,
-  'Drama': 18,
-  'Documentary': 99,
-  'Horror': 27,
+Map<String, int> genresMapReversed = {
+  "Action": 28,
+  "Adventure": 12,
+  "Animation": 16,
+  "Comedy": 35,
+  "Crime": 80,
+  "Documentary": 99,
+  "Drama": 18,
+  "Family": 10751,
+  "Fantasy": 14,
+  "Horror": 27,
+  "Mystery": 9648,
+  "Romance": 10749,
+  "Science Fiction": 878,
+  "Thriller": 53,
 };

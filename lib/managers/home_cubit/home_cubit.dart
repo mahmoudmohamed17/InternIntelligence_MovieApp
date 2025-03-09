@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:movie_app/helpers/movie_entity.dart';
 import 'package:movie_app/models/movie_model.dart';
@@ -10,23 +12,27 @@ class HomeCubit extends Cubit<HomeState> {
         HomeState(
           status: HomeStatus.loading,
           movies: [],
-          selectedCategory: 'All',
+          selectedCategory: 'Action',
         ),
       ) {
-    getAllMovies();
+    getAllMovies(id: 28);
   }
   final _homeRepo = HomeRepoImpl();
 
-  Future<void> getAllMovies({int? categoryId}) async {
+  Future<void> getAllMovies({required int id}) async {
     emit(
       state.copyWith(
         status: HomeStatus.loading,
-        selectedCategory: categoryId == null ? 'All' : movieType[categoryId],
+        selectedCategory: genresMap[id],
       ),
     );
-    var result = await _homeRepo.getAllMovies(id: categoryId);
+    var result = await _homeRepo.getAllMovies(id: id);
+    log('Loading data for ${genresMap[id]}...');
     result.fold(
-      (failure) => emit(state.copyWith(status: HomeStatus.failed)),
+      (failure) {
+        log('The error: ${failure.message}');
+        emit(state.copyWith(status: HomeStatus.failed));
+      },
       (movies) =>
           emit(state.copyWith(status: HomeStatus.success, movies: movies)),
     );

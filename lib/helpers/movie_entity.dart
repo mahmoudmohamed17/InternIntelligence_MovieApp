@@ -5,7 +5,7 @@ class MovieEntity {
   final String description;
   final String rate;
   final String releasYear;
-  final String type;
+  final List<String> type;
   String trailerKey;
   bool isBookmarked;
 
