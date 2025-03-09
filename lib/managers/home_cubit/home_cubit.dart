@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:bloc/bloc.dart';
 import 'package:movie_app/helpers/movie_entity.dart';
 import 'package:movie_app/models/movie_model.dart';
@@ -27,12 +25,8 @@ class HomeCubit extends Cubit<HomeState> {
       ),
     );
     var result = await _homeRepo.getAllMovies(id: id);
-    log('Loading data for ${genresMap[id]}...');
     result.fold(
-      (failure) {
-        log('The error: ${failure.message}');
-        emit(state.copyWith(status: HomeStatus.failed));
-      },
+      (failure) => emit(state.copyWith(status: HomeStatus.failed)),
       (movies) =>
           emit(state.copyWith(status: HomeStatus.success, movies: movies)),
     );

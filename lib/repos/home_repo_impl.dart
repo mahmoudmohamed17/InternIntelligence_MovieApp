@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:movie_app/helpers/api_server_failure.dart';
@@ -21,7 +19,6 @@ class HomeRepoImpl extends HomeRepo {
     } on DioException catch (e) {
       return left(ApiServerFailure.fromDioException(e));
     } catch (e) {
-      log('From HomeRepoImpl catch body');
       return left(Failure(message: e.toString()));
     }
   }
