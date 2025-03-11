@@ -18,7 +18,7 @@ class ApiService {
 
   Future<Map<String, dynamic>> getAllMovies({required int id}) async {
     var response = await dio.get(
-      'discover/movie?api_key=${AppStrings.myApiKey}&page=5&with_genres=$id',
+      'discover/movie?api_key=${AppStrings.myApiKey}&page=6&with_genres=$id',
     );
     return response.data;
   }

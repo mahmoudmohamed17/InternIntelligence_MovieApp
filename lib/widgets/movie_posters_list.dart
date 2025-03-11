@@ -38,7 +38,6 @@ class _MoviePostersListState extends State<MoviePostersList> {
     _pageController.dispose();
     super.dispose();
   }
-
   @override
   Widget build(BuildContext context) {
     return SizedBox(

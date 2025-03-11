@@ -45,7 +45,7 @@ class LatestMoviesWidget extends StatelessWidget {
                 ),
               );
             }
-            return MoviesList(movies: state.movies.sublist(10));
+            return MoviesList(movies: state.movies.sublist(11));
           },
         ),
       ],
