@@ -65,52 +65,54 @@ class _HomeContentWidgetState extends State<HomeContentWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          spacing: 8,
-          children: [
-            Text(
-              'Categories',
-              style: AppStyles.semiBold20.copyWith(color: Colors.white),
-            ),
-            SizedBox(
-              height: 30,
-              child: ListView.builder(
-                controller: _scrollController,
-                physics: const BouncingScrollPhysics(),
-                scrollDirection: Axis.horizontal,
-                itemCount: models.length,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: EdgeInsets.only(right: index == models.length - 1 ? 0 : 8),
-                    child: GestureDetector(
-                      onTap: () => _onTapTab(index),
-                      child: TabWidget(
-                        isActive: _currentIndex == index,
-                        model: models[index],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8),
+      child: Column(
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            spacing: 8,
+            children: [
+              Text(
+                'Categories',
+                style: AppStyles.semiBold20.copyWith(color: Colors.white),
+              ),
+              SizedBox(
+                height: 30,
+                child: ListView.builder(
+                  controller: _scrollController,
+                  physics: const BouncingScrollPhysics(),
+                  scrollDirection: Axis.horizontal,
+                  itemCount: models.length,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: EdgeInsets.only(right: index == models.length - 1 ? 0 : 8),
+                      child: GestureDetector(
+                        onTap: () => _onTapTab(index),
+                        child: TabWidget(
+                          isActive: _currentIndex == index,
+                          model: models[index],
+                        ),
                       ),
-                    ),
-                  );
-                },
+                    );
+                  },
+                ),
               ),
-            ),
-
-            SizedBox(
-              height: context.height * 0.61,
-              child: PageView.builder(
-                controller: _pageController,
-                onPageChanged: (index) {
-                  _onTapTab(index);
-                },
-                itemCount: models.length,
-                itemBuilder: (context, index) => const MoviesPage(),
+              SizedBox(
+                height: context.height * 0.61,
+                child: PageView.builder(
+                  controller: _pageController,
+                  onPageChanged: (index) {
+                    _onTapTab(index);
+                  },
+                  itemCount: models.length,
+                  itemBuilder: (context, index) => const MoviesPage(),
+                ),
               ),
-            ),
-          ],
-        ),
-      ],
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

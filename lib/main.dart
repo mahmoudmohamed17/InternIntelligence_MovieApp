@@ -1,4 +1,3 @@
-import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/helpers/app_routing.dart';
@@ -9,7 +8,7 @@ import 'package:movie_app/managers/saved_movies_cubit/saved_movie_cubit.dart';
 
 void main() {
   Bloc.observer = MyBlocObserver();
-  runApp(DevicePreview(builder: (context) => const MyApp()));
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
