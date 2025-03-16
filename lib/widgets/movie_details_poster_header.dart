@@ -27,7 +27,7 @@ class MovieDetailsPosterHeader extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           spacing: 12,
           children: [
-            BookmarkActionButton(movie: movie,),
+            BookmarkActionButton(movie: movie),
             ActionButton(
               model: ActionButtonModel(
                 icon: FontAwesomeIcons.share,

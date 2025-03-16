@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:movie_app/helpers/context_extension.dart';
+import 'package:movie_app/helpers/get_movie_trailer_key.dart';
 import 'package:movie_app/helpers/movie_entity.dart';
 import 'package:movie_app/helpers/navigation_extension.dart';
 import 'package:movie_app/helpers/routes.dart';
@@ -20,11 +21,12 @@ class MoviesList extends StatelessWidget {
         itemCount: movies.length,
         itemBuilder: (context, index) {
           return GestureDetector(
-            onTap: () {
+            onTap: () async {
               context.pushNamed(
                 Routes.movieDetailsView,
                 arguments: movies[index],
               );
+              await getMovieTrailerKey(movies[index]);
             },
             child: Padding(
               padding: EdgeInsets.only(right: index == 9 ? 0 : 8),

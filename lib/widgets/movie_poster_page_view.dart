@@ -13,7 +13,7 @@ class MoviePosterPageView extends StatelessWidget {
         controller: pageController,
         itemCount: moviesPosters.length,
         itemBuilder: (context, index) {
-         return Image.asset(moviesPosters[index], fit: BoxFit.fill);
+          return Image.asset(moviesPosters[index], fit: BoxFit.fill);
         },
       ),
     );

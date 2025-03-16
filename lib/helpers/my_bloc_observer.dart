@@ -18,15 +18,11 @@ class MyBlocObserver implements BlocObserver {
   }
 
   @override
-  void onError(BlocBase bloc, Object error, StackTrace stackTrace) {
-  }
+  void onError(BlocBase bloc, Object error, StackTrace stackTrace) {}
 
   @override
-  void onEvent(Bloc bloc, Object? event) {
-  }
-  
-  @override
-  void onTransition(Bloc bloc, Transition transition) {
-  }
+  void onEvent(Bloc bloc, Object? event) {}
 
+  @override
+  void onTransition(Bloc bloc, Transition transition) {}
 }

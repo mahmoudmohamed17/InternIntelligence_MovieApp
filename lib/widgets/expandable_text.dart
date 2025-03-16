@@ -6,7 +6,6 @@ import 'package:movie_app/utils/styles.dart';
 class ExpandableText extends StatefulWidget {
   final String text;
   final int maxLength;
-  
 
   const ExpandableText({super.key, required this.text, this.maxLength = 2});
 

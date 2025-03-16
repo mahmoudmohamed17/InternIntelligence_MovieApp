@@ -26,11 +26,11 @@ class MovieDetailsPoster extends StatelessWidget {
                       const Center(child: Icon(FontAwesomeIcons.exclamation)),
             ),
           ),
-           Padding(
+          Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 48),
             child: Align(
               alignment: Alignment.topCenter,
-              child: MovieDetailsPosterHeader(movie: movie,),
+              child: MovieDetailsPosterHeader(movie: movie),
             ),
           ),
         ],

@@ -29,7 +29,7 @@ class MovieInfoAndButtons extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 16),
-          const MovieDetailsButton(),
+          MovieDetailsButton(movie: movie),
           const SizedBox(height: 16),
           ExpandableText(text: movie.description, maxLength: 100),
         ],

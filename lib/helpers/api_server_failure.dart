@@ -16,14 +16,17 @@ class ApiServerFailure extends Failure {
         return ApiServerFailure(message: 'Bad certificate.');
       case DioExceptionType.badResponse:
         return ApiServerFailure.fromResponse(
-            dioException.response!.statusCode!, dioException.response!.data);
+          dioException.response!.statusCode!,
+          dioException.response!.data,
+        );
       case DioExceptionType.cancel:
         return ApiServerFailure(message: 'Connection canceled.');
       case DioExceptionType.connectionError:
         return ApiServerFailure(message: 'No internet connection.');
       case DioExceptionType.unknown:
         return ApiServerFailure(
-            message: 'Unexpected error, please try again later.');
+          message: 'Unexpected error, please try again later.',
+        );
     }
   }
 
@@ -34,10 +37,12 @@ class ApiServerFailure extends Failure {
       return ApiServerFailure(message: 'Request not found, try again later.');
     } else if (statusCode == 500) {
       return ApiServerFailure(
-          message: 'Internal server error, try again later.');
+        message: 'Internal server error, try again later.',
+      );
     } else {
       return ApiServerFailure(
-          message: 'Oops! there was an error, please try again.');
+        message: 'Oops! there was an error, please try again.',
+      );
     }
   }
 }

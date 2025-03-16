@@ -11,9 +11,9 @@ class MovieDetailsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       backgroundColor: AppColors.primaryColor,
-      body: MovieDetailsViewBody(movie: movie,),
+      body: MovieDetailsViewBody(movie: movie),
     );
   }
 }

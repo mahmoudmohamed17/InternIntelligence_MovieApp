@@ -44,7 +44,7 @@ class MostPopularMoviesWidget extends StatelessWidget {
                 ),
               );
             }
-            return MoviesList(movies: state.movies.sublist(0,10));
+            return MoviesList(movies: state.movies.sublist(0, 10));
           },
         ),
       ],

@@ -86,7 +86,9 @@ class _HomeContentWidgetState extends State<HomeContentWidget> {
                   itemCount: models.length,
                   itemBuilder: (context, index) {
                     return Padding(
-                      padding: EdgeInsets.only(right: index == models.length - 1 ? 0 : 8),
+                      padding: EdgeInsets.only(
+                        right: index == models.length - 1 ? 0 : 8,
+                      ),
                       child: GestureDetector(
                         onTap: () => _onTapTab(index),
                         child: TabWidget(
